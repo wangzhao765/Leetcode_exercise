@@ -4,19 +4,26 @@ class Solution:
         :type n: int
         :rtype: List[str]
         """
+        answer = []
+        for i in range(n+1):
+            answer.append([])
         def solution(n):
             if n == 1:
                 return ["()"]
-            ans_set = set()
-            s = solution(n-1)
-            for st in s:
-                ans_set.add("()"+st)
-                ans_set.add("("+st+")")
-                ans_set.add(st+"()")
-            return list(ans_set)
-        s = solution(n)
-        s1 = s.sort()
-        return s
+            if answer[n-1] == []:
+                answer[n-1] = solution(n-1)
+            ans = set()
+            for st in answer[n-1]:
+                ans.add("("+st+")")
+            for i in range(n):
+                for st1 in answer[i]:
+                    for st2 in answer[n-i]:
+                        ans.add(st1+st2)
+            a = list(ans)
+            a.sort()
+            return(a)
+        answer[n] = solution(n)
+        return answer[n]
 
 if __name__ == '__main__':
     s = Solution()
