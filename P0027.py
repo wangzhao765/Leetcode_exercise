@@ -7,14 +7,14 @@ class Solution:
         """
         sum = 0
         for i in range(len(nums)):
-            if nums[i]==val:
+            if nums[i]!=val:
                 sum = sum + 1
-        for i in range(sum):
+        for i in range(len(nums)-sum):
             nums.remove(val)
         return sum
 
 
 if __name__ == '__main__':
     s = Solution()
-    a = [1]
-    print(s.removeElement(a, 1), a)
+    a = [0,1,2,2,3,0,4,2]
+    print(s.removeElement(a, 2), a)
