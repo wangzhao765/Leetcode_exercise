@@ -1,4 +1,4 @@
-package Problem
+package problem
 
 import "fmt"
 
@@ -12,30 +12,29 @@ func bsearch(nums *[]int, p, q, k int) int {
 	i := p
 	j := q
 	mid := (*nums)[(i+j)/2]
-	for i<=j {
-		for (*nums)[i]<mid {
+	for i <= j {
+		for (*nums)[i] < mid {
 			i++
 		}
-		for (*nums)[j]>mid {
+		for (*nums)[j] > mid {
 			j--
 		}
-		if i<=j {
+		if i <= j {
 			(*nums)[i], (*nums)[j] = (*nums)[j], (*nums)[i]
 			i++
 			j--
 		}
 	}
 	//fmt.Println(mid, i, j, *nums)
-	if p<j && p<=len(*nums)-k && j>=len(*nums)-k {
+	if p < j && p <= len(*nums)-k && j >= len(*nums)-k {
 		bsearch(nums, p, j, k)
 	}
-	if i<q && i<=len(*nums)-k && q>=len(*nums)-k{
+	if i < q && i <= len(*nums)-k && q >= len(*nums)-k {
 		bsearch(nums, i, q, k)
 	}
 	return 0
 }
 
 func P0215() {
-	fmt.Println(findKthLargest([]int{3,2,3,1,2,4,5,5,6}, 9))
+	fmt.Println(findKthLargest([]int{3, 2, 3, 1, 2, 4, 5, 5, 6}, 9))
 }
-

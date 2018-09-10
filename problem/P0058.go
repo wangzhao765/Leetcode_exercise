@@ -1,14 +1,14 @@
-package Problem
+package problem
 
 import "strings"
 
 func lengthOfLastWord(s string) int {
 	strs := strings.Split(s, " ")
-	if len(strs)==0 {
+	if len(strs) == 0 {
 		return 0
 	} else {
-		for i:=len(strs)-1;i>=0;i-- {
-			if len(strs[i])==0 {
+		for i := len(strs) - 1; i >= 0; i-- {
+			if len(strs[i]) == 0 {
 				continue
 			} else {
 				return len(strs[i])
@@ -18,6 +18,6 @@ func lengthOfLastWord(s string) int {
 	}
 }
 
-func P0058()  {
+func P0058() {
 	println(lengthOfLastWord("   a "))
 }

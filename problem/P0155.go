@@ -1,12 +1,11 @@
-package Problem
+package problem
 
 import "fmt"
 
 type MinStack struct {
-	vals, minlist []int
+	vals, minlist     []int
 	minLength, length int
 }
-
 
 /** initialize your data structure here. */
 func Constructor() MinStack {
@@ -18,9 +17,8 @@ func Constructor() MinStack {
 	return minStack
 }
 
-
-func (this *MinStack) Push(x int)  {
-	if this.length==0 {
+func (this *MinStack) Push(x int) {
+	if this.length == 0 {
 		this.vals = append(this.vals, x)
 		this.length = 1
 		this.minlist = append(this.minlist, x)
@@ -28,17 +26,16 @@ func (this *MinStack) Push(x int)  {
 	} else {
 		this.vals = append(this.vals, x)
 		this.length++
-		if x<=this.minlist[this.minLength-1] {
+		if x <= this.minlist[this.minLength-1] {
 			this.minlist = append(this.minlist, x)
 			this.minLength++
 		}
 	}
 }
 
-
-func (this *MinStack) Pop()  {
-	if this.length>0 {
-		if this.vals[this.length-1]==this.minlist[this.minLength-1] {
+func (this *MinStack) Pop() {
+	if this.length > 0 {
+		if this.vals[this.length-1] == this.minlist[this.minLength-1] {
 			this.minLength--
 			this.minlist = this.minlist[0:this.minLength]
 		}
@@ -47,18 +44,16 @@ func (this *MinStack) Pop()  {
 	}
 }
 
-
 func (this *MinStack) Top() int {
-	if this.length>0 {
+	if this.length > 0 {
 		return this.vals[this.length-1]
 	} else {
 		return 0
 	}
 }
 
-
 func (this *MinStack) GetMin() int {
-	if this.length>0 {
+	if this.length > 0 {
 		return this.minlist[this.minLength-1]
 	} else {
 		return 0
@@ -79,13 +74,13 @@ func (this *MinStack) P() {
  * param_4 := obj.GetMin();
  */
 
- func P0155() {
- 	obj := Constructor()
- 	obj.Push(0)
- 	obj.Push(1)
- 	obj.Push(0)
- 	fmt.Println(obj.GetMin())
- 	obj.Pop()
- 	fmt.Println(obj.Top())
- 	fmt.Println(obj.GetMin())
- }
+func P0155() {
+	obj := Constructor()
+	obj.Push(0)
+	obj.Push(1)
+	obj.Push(0)
+	fmt.Println(obj.GetMin())
+	obj.Pop()
+	fmt.Println(obj.Top())
+	fmt.Println(obj.GetMin())
+}
